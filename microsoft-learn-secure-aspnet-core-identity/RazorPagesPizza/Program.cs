@@ -1,6 +1,7 @@
-using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using RazorPagesPizza.Areas.Identity.Data;
+using RazorPagesPizza.Services;
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("RazorPagesPizzaAuthConnection") ?? throw new InvalidOperationException("Connection string 'RazorPagesPizzaAuthConnection' not found.");
 
@@ -10,6 +11,8 @@ builder.Services.AddDefaultIdentity<RazorPagesPizzaUser>(options => options.Sign
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddTransient<IEmailSender, EmailSender>();
 
 var app = builder.Build();
 

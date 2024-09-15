@@ -32,3 +32,10 @@
 		- To update the database, create and run an EF Core migration:
 			dotnet ef migrations add CreateIdentitySchema
 			dotnet ef database update
+			
+		- Customize Identity
+		
+			- Customize the user account data
+			
+				- Add the user registration files to be modified to the project:
+					dotnet aspnet-codegenerator identity --dbContext RazorPagesPizzaAuth --files "Account.Manage.EnableAuthenticator;Account.Manage.Index;Account.Register;Account.ConfirmEmail"
